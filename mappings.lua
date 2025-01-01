@@ -31,7 +31,7 @@ M.dap_python = {
 M.dap_go = {
   plugin = true,
   n = {
-    ["<leader>dgt"] = {
+    ["<leader>gt"] = {
       function() require('dap-go').test_method() end,
       "run tests",
     },
@@ -84,7 +84,7 @@ M.disabled = {
 M.abc = {
     n = {
         -- exe 'map <Leader>b :buffer '
-        ["<leader>b"] = {":buffer "},
+        ["<leader>b"] = {":Telescope buffers<CR>"},
         ["<C-d>"] = {"<C-d>zz"},
         ["<C-u>"] = {"<C-u>zz"},
         ["n"] = {"nzzzv"},

@@ -36,6 +36,7 @@ opt.shortmess = opt.shortmess + {I=true} + {a=true}
 
 -- vim.api.nvim_create_autocmd({ "BufWritePre" }, {   pattern = { "*" },   command = [[%s/\s\+$//e]], })
 
+vim.g.nvim_tree_disable_window_picker = 1
 
 -- Strip trailing spaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
@@ -46,7 +47,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       vim.fn.setpos(".", save_cursor)
     end,
 })
-
 
 -- local group_python = vim.api.nvim_create_augroup("PythonGroup", {clear = true})
 -- vim.api.nvim_create_autocmd("BufEnter", {}, group = group_python)

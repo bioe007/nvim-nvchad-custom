@@ -13,6 +13,10 @@ local plugins = {
             },
         },
     },
+    -- nvim-dap-ui requires nvim-nio to be installed. Install from https://github.com/nvim-neotest/nvim-nio
+    -- {
+    --     "nvim-neotest/nvim-nio",
+    -- },
     {
         "tpope/vim-fugitive",
         -- cmd = { "Git", "Gedit", "Gsplit", "Gdiffsplit" },
@@ -57,7 +61,7 @@ local plugins = {
     },
     {
         "rcarriga/nvim-dap-ui",
-        dependencies = "mfussenegger/nvim-dap",
+        dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
         config = function()
             local dap = require("dap")
             local dapui = require("dapui")
@@ -108,6 +112,32 @@ local plugins = {
         build = function()
             vim.cmd [[silent! GoInstallDeps]]
         end,
-    }
+    },
+    {
+    'adelarsq/image_preview.nvim',
+    event = 'VeryLazy',
+    config = function()
+        require("image_preview").setup()
+    end
+},
+    -- currently this is pretty broken with pixelated images.
+    {
+    "nvim-telescope/telescope-media-files.nvim",
+        lazy=false,
+        dependencies={
+            -- "nvim-lua/plenary",
+            -- "nvim-telescope/telescope",
+            -- "nvim-lua/popup"
+        },
+        config = function()
+            local telescope = require('telescope')
+            telescope.setup({
+            extensions = {
+            media_files = {
+                -- command_open_thumbnail = "kitten icat",
+        }
+    }})
+    end
+    },
 }
 return plugins
