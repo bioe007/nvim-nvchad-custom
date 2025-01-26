@@ -5,7 +5,6 @@ local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
 
-
 lspconfig.rust_analyzer.setup({
     on_attach=on_attach,
     capabilities = capabilities,
@@ -13,6 +12,15 @@ lspconfig.rust_analyzer.setup({
     root_dir = lspconfig.util.root_pattern("Cargo.toml")
 })
 
+lspconfig.ts_ls.setup({
+    on_attach=on_attach,
+    -- capabilities = capabilities,
+    capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+    -- on_attach = function(client)
+    --     client.resolved_capabilities.document_formatting = false
+    -- end,
+    filetypes = {"typescript"}
+})
 
 lspconfig.gopls.setup{
     on_attach=on_attach,
